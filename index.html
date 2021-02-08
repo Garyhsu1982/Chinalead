@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Webmap 201</title>
+        <link rel="stylesheet" href="src/leaflet.css">
+        <link rel="stylesheet" href="src/css/bootstrap-5/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="src/plugins/Leaflet.Pancontrol-master/L.Control.Pan.css">
+        <link rel="stylesheet" href="src/plugins/Leaflet.zoomslider-master/L.Control.Zoomslider.css">
+        <link rel="stylesheet" href="src/plugins/Leaflet.MousePosition-master/L.Control.MousePosition.css">
+        <link rel="stylesheet" ref="src/plugins/Leaflet.PolylineMeasure-master/Leaflet.PolylineMeasure.css">
+        <link rel="stylesheet" href="src/plugins/Leaflet.EasyButton-master/easy-button.css">
+        <link rel="stylesheet" href="src/plugins/leaflet-sidebar-master/L.Control.Sidebar.css">
+        <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/dist/css/Leaflet.StyleEditor.min.css">
+        <link rel="stylesheet" href="src/css/font-awesome.min.css">
+        <link rel="stylesheet" href="src/plugins/leaflet.awesome-markers.css">
+        <link rel="stylesheet" href="src/plugins/leaflet-mapkey/L.Icon.Mapkey.css">
+        <link rel="stylesheet" href="src/plugins/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="src/jquery-ui.min.css">
+        
+        <script src="src/leaflet-src.js"></script>
+        <script src="src/jquery-3.5.1.min.js"></script>
+        <script src="src/js/bootstrap-5/bootstrap.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="src/plugins/Leaflet.Pancontrol-master/L.Control.Pan.js"></script>
+        <script src="src/plugins/Leaflet.zoomslider-master/L.Control.Zoomslider.js"></script>
+        <script src="src/plugins/Leaflet.MousePosition-master/L.Control.MousePosition.js"></script>
+        <script src="src/plugins/Leaflet.PolylineMeasure-master/Leaflet.PolylineMeasure.js"></script>
+        <script src="src/plugins/Leaflet.EasyButton-master/easy-button.js"></script>
+        <script src="src/plugins/leaflet-sidebar-master/L.Control.Sidebar.js"></script>
+        <script src="src/plugins/leaflet-providers-master/leaflet-providers.js"></script>
+        <script src="src/plugins/leaflet.awesome-markers.min.js"></script>
+        <script src="src/plugins/leaflet-mapkey/L.Icon.Mapkey.js"></script>
+        <script src="src/plugins/leaflet.markercluster.js"></script>
+        <script src="src/jquery-ui.min.js"></script>
+        
+        <!--    ***************  Begin Leaflet.Draw-->         
+        <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script> 
+        <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script> 
+        <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/> 
+        <script src="src/plugins/leaflet-draw/Toolbar.js"></script> 
+        <script src="src/plugins/leaflet-draw/Tooltip.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script> 
+        <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script> 
+        <script src="src/plugins/leaflet-draw/draw/handler/Draw.CircleMarker.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script> 
+        <script src="src/plugins/leaflet-draw/Control.Draw.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.CircleMarker.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script> 
+        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script> 
+        <!--    **************  End of Lealet Draw-->
+        <script src="src/plugins/leaflet-styleeditor/dist/javascript/Leaflet.StyleEditor.min.js"></script>
+        <script src="src/plugins/leaflet.ajax.min.js"></script>
+        <script src="src/plugins/leaflet.sprite.js"></script>
+        
+        
+        <!-- Setup basic layout with CSS and Bootstraps Html  -->
+        <style> 
+            #mapdiv {              
+                height:100vh;
+            }
+            
+            .col-xs-12, .col-xs-6, .col-xs-4 {   /*override bootstrap class so it wont take too much space*/
+               padding:3px;
+            }   
+            
+            #side-bar {
+                background-color: lightgrey;
+            }
+            
+            #divProject {
+                background-color: beige;
+            }
+            
+            .errorMsg {
+                padding:0;
+                text-align:center;
+                background-color:darksalmon;
+            }     
+            
+        </style>
+    </head>
+    <body>                         
+        <div id="side-bar" class="col-md-3">  <!-- add sider bar and map take 3 and 9 rows repsectively ,remove class for pop up to show this html tap -->
+            <button id="btnLocate" class="btn btn-primary btn-block">Locate</button><br> <!-- add button for locating  -->
+            <div id="divProject" class ="col-xs-12">
+                <div id="divProjLabel" class="text-center col-xs-12">
+                    <h4>Linear Projects</h4>
+                </div>
+                <div id="divProjectError" class="errorMsg col-xs-12"></div> 
+                <div id="divFindProject" class="form-group has-error">
+                    <div class="col-xs-6">
+                         <input type="text" id="textFindProject" class="form-control" placeholder ="Project ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindProject" class="btn btn-primary btn-block">Find Project</button>
+                    </div>
+                </div>
+                <div class="" id="divProjectData"></div> 
+            </div> 
+        </div>
+        <div id="mapdiv" class="col-md-12"></div>
+  
+       <script>
+            var mymap;
+            var lyrOSM;
+            var lyrTopo;  /*add maps*/
+            var lyrImagery;
+            var lyrChinaPb;
+            var lyrEagleNests; 
+            var lyrRaptorNests; 
+            var lyrMarkerCluster;  /*create marker clusters*/
+            var lyrClientLines; /*add polyline*/
+            var lyrSearch;
+            var lyrBUOWL;/*add multi polygen/
+            var lyrGBH;/*add multi polygen/ 
+            var mrkCurrentLocation;
+            var fgpDrawnItems; /*create feature group for drawn items*/
+            var ctlLayers; /*add layers to include all maps*/
+            var ctlDraw; /*able to draw your own data*/
+            var objBasemaps; /*create base map selection for the layer*/
+            var objOverlays; /*overlapping base maps*/
+            var ctlStyle;
+            var ctlAttribute;
+            var ctlScale; 
+            var ctlPan; 
+            var ctlMouseposition;
+            var ctlMeasure;
+            var ctlEasybutton;
+            var ctlSidebar;
+            var arProjectIDs =[]; /*declare as empty array*/
+                 
+            $(document).ready(function(){  //put all variables in jquerry function
+                
+                // ********** Map Initialisation*******************************
+                
+                mymap = L.map('mapdiv', {center:[35.8, 104.15], zoom:5,
+                attributionControl:false });
+                
+                ctlAttribute= L.control.attribution({position:"bottomleft",prefix:false}).addTo(mymap);
+                ctlAttribute.addAttribution("OSM");
+                ctlAttribute.addAttribution('&copy; <a href="http://millermountain.com">Miller Mountain LLC</a>')
+                
+                ctlScale=L.control.scale({position:"bottomleft",metric:false,maxWidth:200}).addTo(mymap);
+                
+                ctlPan= L.control.pan().addTo(mymap); // use pan tool for leaflet plugins 
+                
+                ctlMeasure = L.control.polylineMeasure().addTo(mymap); //use measure tool from leaflet plugins
+            
+                ctlEasybutton=L.easyButton('glyphicon-transfer',function(){
+                   ctlSidebar.toggle(); 
+                }).addTo(mymap);  // use easy button leaflet plugins and click to show sidebar 
+                
+                ctlSidebar=L.control.sidebar("side-bar").addTo(mymap); // use sidebar leaflet plugin, and pass side-bar we created before
+                
+                ctlMouseposition=L.control.mousePosition().addTo(mymap);// use mousepostion tool from leaflet plugins
+                                
+                
+                // *****************Layer Initialisation***********************
+                
+                lyrTopo = L.tileLayer('https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+                attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 22,
+                subdomains: 'abcd',
+                accessToken: 'SaHs091yc5t3FNhyNuGpzxqf4wPV8Vm8F2Sd2lF3om52lSlWjs9s2rhX9VlR0AC2'});
+                lyrOSM = L.tileLayer.provider ('OpenStreetMap.Mapnik');
+                lyrImagery = L.tileLayer.provider ('Esri.WorldImagery');
+                mymap.addLayer(lyrTopo);
+                
+                fgpDrawnItems= new L.featureGroup();
+                fgpDrawnItems.addTo(mymap);
+                
+                
+                lyrChinaPb =L.geoJSON.ajax('data/Chinalead.geojson',{pointToLayer:returnEagleMarker});
+                lyrChinaPb.on('data:loaded',function(){
+                    lyrMarkerCluster.addLayer(lyrChinaPb);
+                    lyrMarkerCluster.addTo(mymap);
+                });
+                
+                lyrEagleNests =L.geoJSON.ajax('data/wildlife_eagle.geojson',{pointToLayer:returnEagleMarker}).addTo(mymap);  // convert geoJson to leaflet object for styling-- point to layer-- then we can declare a function in the end to filter attribute of the point, set color etc... 
+                
+//                lyrEagleNests.on("data:loaded",function(){
+//                    mymap.fitBounds(lyrEagleNests.getBounds());
+//                }); // when data loaded zoom to this layer
+                
+                lyrMarkerCluster = L.markerClusterGroup();  // cluster points together 
+                
+                lyrRaptorNests =L.geoJSON.ajax('data/wildlife_raptor.geojson',{pointToLayer:returnRaptorMarker});  // convert geoJson to leaflet object then we can declare a function in the end to filter attribute of the point, set color etc... 
+                lyrRaptorNests.on('data:loaded',function(){
+                    lyrMarkerCluster.addLayer(lyrRaptorNests);
+                }); // when data loaded zoom to this layer // add cluster markers to this layer
+                
+                lyrClientLines = L.geoJSON.ajax('data/client_lines.geojson',{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(mymap);
+                lyrClientLines.on('data:loaded',function(){
+                     arProjectIDs.sort(function(a,b){return a-b});
+                     $("#textFindProject").autocomplete({
+                         source:arProjectIDs
+                     });
+                });  // setup autocomplete drop down box for search
+                
+                lyrBUOWL = L.geoJSON.ajax('data/wildlife_buowl.geojson',{style:styleBUOWL,onEachFeature:processBUOWL,filter:filterBUOWL}).addTo(mymap);//add multi polygons
+                
+                lyrGBH = L.geoJSON.ajax('data/wildlife_gbh.geojson',{style:{color:'fuchsia'}}).bindTooltip("GBH Nesting Area").addTo(mymap);//add multi polygons
+                
+                //****************Setup Layer Control*********************
+                
+                objBasemaps = {
+                    "Topo Map": lyrTopo,
+                    "Open Street Maps": lyrOSM,
+                    "Imagery": lyrImagery,
+                };
+                
+                objOverlays= {
+                    "Client Linears":lyrClientLines,
+                    "Burrowing Owl Habitat":lyrBUOWL,
+                    "GBH":lyrGBH,
+                    "Eagle Nests":lyrEagleNests,
+                    "Raptor Nests":lyrMarkerCluster,
+                    "Drawn Items":fgpDrawnItems
+                }; // overlay image and buttons need to declare layer before put in overlap
+                
+                ctlLayers=L.control.layers(objBasemaps,objOverlays).addTo(mymap);   // create a layer with all base maps. 
+                ctlStyle = L.control.styleEditor({position:"topright"}).addTo(mymap);
+                
+                // *************Setup Draw Control**********************
+                
+                ctlDraw= new L.Control.Draw({
+                    draw:{
+                        circle:false
+                    },
+                    edit:{
+                        featureGroup:fgpDrawnItems
+                    }
+                });
+                ctlDraw.addTo(mymap); // add tool bar for drawing data
+                
+                mymap.on("draw:created", function(e){
+                    console.log(e);
+                    fgpDrawnItems.addLayer(e.layer);
+                }); // make new features to be drawn on map
+                
+                //****************Location Event**********************
+                
+                mymap.on("locationfound",function(e) {
+                         console.log(e);
+                         if (mrkCurrentLocation) {
+                             mrkCurrentLocation.remove();   // if it finds my location, remove that location if not carry on the next line
+                         }
+                         mrkCurrentLocation = L.circle(e.latlng,
+                        {radius:e.accuracy/2}).addTo(mymap);   // add radis to circle based on how accurate the location is 
+                         mymap.setView(e.latlng, 14);
+                });
+                
+                mymap.on("locationerror",function(e) {
+                    console.log(e);
+                    alert("Location was not found");
+                });
+            });  
+           
+            //*****************BUOWL Functions*************************** 
+            
+           function styleBUOWL(json){
+                var att = json.properties;
+                switch (att.hist_occup){
+                    case "Yes":
+                        return {color:"deeppink",fillColor:"black"};
+                        break;
+                    case "Undetermined":
+                        return {color:"black"};
+                        break;
+                }
+            }
+            
+            function processBUOWL(json,lyr){
+                var att = json.properties;
+                lyr.bindTooltip("<h4>Habitat ID: "+att.habitat_id+"</h4>Historically Occupied: "+att.hist_occup+"<br>Status: "+att.recentstatus);
+            }
+           
+            function filterBUOWL(json){
+                var att = json.properties; 
+                if (att.recentstatus == "REMOVED"){
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            
+            //***************Clientlinear Functions****************
+           
+            function styleClientLinears(json){
+                var att = json.properties;
+                switch (att.type){
+                    case "Pipeline":
+                        return {color:"peru"};
+                        break;
+                    case "Flowline":
+                        return {color:"navy"};
+                        break; 
+                    case "Flowline, est.":
+                        return {color:"peru",dashArray:"5,5"};
+                        break;
+                    case "Electric Line":
+                        return {color:"darkgreen"};
+                        break;   
+                    case "Access Road - Confirmed":
+                        return {color:"darkred"};
+                        break; 
+                    case "Access Road - Estimated":
+                        return {color:"darkred",dashArray:"5,5"};
+                        break;
+                    case "Extraction":
+                        return {color:"indigo"};
+                        break;
+                    default:
+                        return {color:"darkgoldenrod"};
+                        break;
+                }
+            }
+            function processClientLinears(json,lyr) {
+                var att = json.properties;
+                lyr.bindTooltip("<h4>Linear Project: "+att.Project+"</h4>Type: "+att.type+"<br>ROW Wdith: "+att.row_width);
+                arProjectIDs.push(att.Project.toString());
+            }
+           
+            function returnClientLineByID(id) {   //search for ClientLine by id we enter 
+                var arLayers = lyrClientLines.getLayers();   // define variable to get the Clientlines layer 
+                for (i=0;i<arLayers.length-1;i++) {       //loop through arLayers
+                    var featureID = arLayers[i].feature.properties.Project; // tell loop where to find feature properties "Project" attribute in 
+                    if (featureID==id) {
+                        return arLayers[i];
+                    }
+                }
+                return false;
+            }
+           
+           function testClientLineID(id) {                        //set up error message and disable search when entering invalid numbers in searchbox
+               if (arProjectIDs,indexOf(id)<0) {
+                   $("#divFindProject").addClass("has-error");
+                   $("#divProjectError").html("PROJECT ID NOT FOUND");
+                   $("#btnFindProject").attr("disabled",true); 
+               } else {
+                   $("#divFindProject").removeClass("has-error");
+                   $("#divProjectError").html("");
+                   $("#btnFindProject").attr("disabled",false);    
+               }
+           }
+            
+            $("#txtFindProject").on('keyup paste', function(){
+                var id = $("#txtFindProject").val();
+                testClientLineID(id);
+            });
+           
+            $("#btnFindProject").click(function(){   //handle click event of search button
+                var id = $("#txtFindProject").val(); // retrieve id from text box
+                var lyr = returnClientLineByID(id); // pass it to the returnProjectById
+                if (lyr) {                           // if id found, remove existing layer and add/create new feature to search results
+                    if (lyrSearch){
+                          lyrSearch.remove();
+                    }
+                    lyrSearch = L.geoJSON(lyr.toGeoJSON(),{style:{color:'red',weight:10,opacity:0.5}}).addTo(mymap);
+                    mymap.fitBounds(lyr.getBounds().pad(1)); // zoom to the search layer
+                    var att = lyr.feature.properties;  // populate side bar with search results 
+                    $("#divProjectData").html("<h4 class='text-center'>Attributes</h4><h5>Type: "+att.type+"</h5><h5>ROW width: "+att.row_width+"m </h5>");
+                }  else {     // if not found return error
+                     $("#divProjectError").html("Project ID not found");
+                } 
+            });
+           
+            //***********Eagle Functions************
+           
+            function returnEagleMarker(json,latlng){
+                var att = json.properties;           
+                if (att.status=="ACTIVE NEST"){
+                    var clrNest = "deeppink";
+                } else {
+                    var clrNest = "green";
+                }
+                return L.circle(latlng, {radius:804,color:clrNest,fillColor:"green",fillOpacity:0.5}).bindTooltip("<h4>Eagle Nest:"+att.nest_id+"</h4>Status: "+att.status);
+                
+            } // filter and query point properities including point shaps, color, and set conditions for displaying points with different attributes 
+          
+            //***********Raptor Functions************
+           
+            function returnRaptorMarker(json,latlng){
+                var att = json.properties;
+                switch(att.recentspecies){ //add radius to each species
+                    case "Red-tail Hawk":
+                        var radRaptor =533;
+                        break;
+                    case "Swainsons Hawk":
+                        var radRaptor = 400; 
+                        break;
+                    default:
+                        var radRaptor = 804;
+                        break;
+                }
+                switch (att.recentstatus){
+                    case "ACTIVE NEST":
+                        var optRaptor = {radius:radRaptor, color:"deeppink",fillColor:"blue",fillOpacity:0.5};
+                        break;
+                    case "INACTIVE NEST":
+                        var optRaptor= {radius:radRaptor, color:"blue",fillColor:"blue",fillOpacity:0.5};
+                        break
+                    case "FLEDGED NEST":
+                        var optRaptor = {radius:radRaptor, color:"deeppink",fillColor:"blue",fillOpacity:0.5,dashArray:"2,8"};
+                        break;
+                }
+                return L.circle(latlng, optRaptor).bindPopup("<h4>Raptor Nest:"+att.Nest_ID+"</h4>Status: "+att.recentstatus+"<br>Species:"+att.recentspecies+"<br>Last Survey: "+att.lastsurvey);
+            }
+           
+            //************** JQuery Event Handler******************   
+           
+            $("#btnLocate").click(function(){
+                mymap.locate();
+            });
+                         
+            //************** General Funcations************************** 
+           
+            function LatLngToArrayString(ll) {
+                return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
+            }
+           
+       </script>
+    </body>
+</html>
