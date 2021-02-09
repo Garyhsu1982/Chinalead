@@ -83,7 +83,23 @@
             }   
             
             #side-bar {
-                background-color: lightgrey;
+                background-color: lightgray;
+            }
+            
+            #divProvince {
+                background-color: #ffffb3;
+            }
+            
+            #divEagle {
+                background-color: #ccffb3;
+            }
+            
+            #divRaptor {
+                background-color: #e6ffff;
+            }
+            
+            #divSpecimen {
+                background-color: lightpink;
             }
             
             #divProject {
@@ -94,28 +110,139 @@
                 padding:0;
                 text-align:center;
                 background-color:darksalmon;
-            }     
-            
+            }           
+         
         </style>
     </head>
     <body>                         
-        <div id="side-bar" class="col-md-3">  <!-- add sider bar and map take 3 and 9 rows repsectively ,remove class for pop up to show this html tap -->
-            <button id="btnLocate" class="btn btn-primary btn-block">Locate</button><br> <!-- add button for locating  -->
-            <div id="divProject" class ="col-xs-12">
-                <div id="divProjLabel" class="text-center col-xs-12">
-                    <h4>Linear Projects</h4>
+         <div id="side-bar" class="col-md-3">
+            <button id='btnLocate' class='btn btn-primary btn-block' onclick="window.open('https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VID3WR')">Link to Data Source</button><br>
+            
+            <div id="divProject" class="col-xs-12">
+                <div id="divProjectLabel" class="text-center col-xs-12">
+                    <h4 id="lblProject">Site Name</h4>
                 </div>
-                <div id="divProjectError" class="errorMsg col-xs-12"></div> 
+                <div id="divProjectError" class="errorMsg col-xs-12"></div>
                 <div id="divFindProject" class="form-group has-error">
                     <div class="col-xs-6">
-                         <input type="text" id="textFindProject" class="form-control" placeholder ="Project ID">
+                        <input type="text" id="txtFindProject" class="form-control" placeholder="Site">
                     </div>
                     <div class="col-xs-6">
-                        <button id="btnFindProject" class="btn btn-primary btn-block">Find Project</button>
+                        <button id="btnFindProject" class="btn btn-primary btn-block" >Find Site</button>
                     </div>
                 </div>
-                <div class="" id="divProjectData"></div> 
-            </div> 
+                <div class="" id="divProjectData"></div>
+            </div>
+            <div id="divProvince" class="col-xs-12">
+                <div id="divProvinceLabel" class="text-center col-xs-12">
+                    <h4 id="lblProvince">Provinces of China</h4>
+                </div>
+                <div id="divProvinceError" class="errorMsg col-xs-12"></div>
+                <div id="divFindProvince" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindProvince" class="form-control" placeholder="Province">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindProvince" class="btn btn-primary btn-block">Find Province</button>
+                    </div>
+                </div>
+                <div id="divFilterProvince" class="col-xs-12">
+                    <div class="col-xs-4">
+                        <input type='checkbox' name='fltProvince' value='Anhui' checked>Anhui<br>
+                        <input type='checkbox' name='fltProvince' value='Guangdong' checked>Guangdong<br>
+                        <input type='checkbox' name='fltProvince' value='Hebei' checked>Hebei<br>
+                        <input type='checkbox' name='fltProvince' value='Hubei' checked>Hubei<br>
+                        <input type='checkbox' name='fltProvince' value='Jiangsu' checked>Jiangsu<br>
+                        <input type='checkbox' name='fltProvince' value='Liaoning' checked>Liaoning<br>
+                        <input type='checkbox' name='fltProvince' value='Shandong' checked>Shandong<br>
+                        <input type='checkbox' name='fltProvince' value='Sichuan' checked>Sichuan<br>
+                        <input type='checkbox' name='fltProvince' value='Xinjiang' checked>Xinjiang
+                        <button id="btnProvinceFilterAll" class="btn btn-primary btn-block">Check All</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type='checkbox' name='fltProvince' value='Fujian' checked>Fujian<br>
+                        <input type='checkbox' name='fltProvince' value='Guangxi' checked>Guangxi<br>
+                        <input type='checkbox' name='fltProvince' value='Heilongjiang' checked>Heilongjiang<br>
+                        <input type='checkbox' name='fltProvince' value='Hunan' checked>Hubei<br>
+                        <input type='checkbox' name='fltProvince' value='Jiangxi' checked>Jiangxi<br>
+                        <input type='checkbox' name='fltProvince' value='Ningxia' checked>Ningxia<br>
+                        <input type='checkbox' name='fltProvince' value='Shanxi' checked>Shanxi<br>
+                        <input type='checkbox' name='fltProvince' value='Hainan' checked>Hainan<br>
+                        <input type='checkbox' name='fltProvince' value='Yunnan' checked>Yunnan
+                        <button id="btnProvinceFilterNone" class="btn btn-primary btn-block">Uncheck All</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type='checkbox' name='fltProvince' value='Gansu' checked>Gansu<br>
+                        <input type='checkbox' name='fltProvince' value='Henan' checked>Henan<br>
+                        <input type='checkbox' name='fltProvince' value='Inner_Mongolia' checked>Inner Mongolia<br>
+                        <input type='checkbox' name='fltProvince' value='Jilin' checked>Jilin<br>
+                        <input type='checkbox' name='fltProvince' value='Qinghai' checked>Qinghai<br>
+                        <input type='checkbox' name='fltProvince' value='Shaanxi' checked>Shaanxi<br>
+                        <input type='checkbox' name='fltProvince' value='Tibet' checked>Tibet<br>
+                        <input type='checkbox' name='fltProvince' value='Zhejiang' checked>Zhejiang<br>
+                        <input type='checkbox' name='fltProvince' value='Guizhou' checked>Guizhou
+                        <button id="btnProvinceFilter" class="btn btn-primary btn-block">Refresh</button>
+                    </div>
+                </div>
+                
+                <div class="" id="divBUOWLData"></div>
+            </div>
+            <div id="divEagle" class="col-xs-12">
+                <div id="divEagleLabel" class="text-center col-xs-12">
+                    <h4 id="lblEagle">Metallogenic Province</h4>
+                </div>
+                <div id="divEagleError" class="errorMsg col-xs-12"></div>
+                <div id="divFindEagle" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindEagle" class="form-control" placeholder="Metallogenic Province">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindEagle" class="btn btn-primary btn-block">Find Metallogenic Province</button>
+                    </div>
+                </div>
+                <div class="" id="divEagleData"></div>
+            </div>
+            <div id="divRaptor" class="col-xs-12">
+                <div id="divRaptorLabel" class="text-center col-xs-12">
+                    <h4 id="lblRaptor">Metal Type</h4>
+                </div>
+                <div id="divRaptorError" class="errorMsg col-xs-12"></div>
+                <div id="divFindRaptor" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindRaptor" class="form-control" placeholder="Metal Type">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindRaptor" class="btn btn-primary btn-block">Find Metal Type</button>
+                    </div>
+                </div>
+                <div class="" id="divRaptorData"></div>
+            </div>
+            <div id="divSpecimen" class="col-xs-12">
+                <div id="divSpecimenLabel" class="text-center col-xs-12">
+                    <h4 id="lblSpecimen">Specimen</h4>
+                </div>
+                <div id="divSpecimenError" class="errorMsg col-xs-12"></div>
+                <div id="divFindSpecimen" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindSpecimen" class="form-control" placeholder="Specimen">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindSpecimen" class="btn btn-primary btn-block" >Find Specimen</button>
+                    </div>
+                </div>
+                <div id="divFilterSpecimen" class="col-xs-12">
+                    <div class="col-xs-4">
+                        <input type='radio' name='fltSpecimen' value='ALL' checked>All
+                    </div>
+                    <div class="col-xs-4">
+                        <input type='radio' name='fltSpecimen' value='galena'>Galena
+                    </div>
+                    <div class="col-xs-4">
+                        <input type='radio' name='fltSpecimen' value='feldspar'>feldspar
+                    </div>
+                </div>
+                <div class="" id="divSpecimenData"></div>
+            </div>
         </div>
         <div id="mapdiv" class="col-md-12"></div>
   
@@ -125,6 +252,7 @@
             var lyrTopo;  /*add maps*/
             var lyrImagery;
             var lyrChinaPb;
+            var lyrProvince;
             var lyrEagleNests; 
             var lyrRaptorNests; 
             var lyrMarkerCluster;  /*create marker clusters*/
@@ -147,7 +275,9 @@
             var ctlEasybutton;
             var ctlSidebar;
             var arProjectIDs =[]; /*declare as empty array*/
-                 
+            var arSpecimenIDs = [];
+            var arProvinceIDs = [];
+            
             $(document).ready(function(){  //put all variables in jquerry function
                 
                 // ********** Map Initialisation*******************************
@@ -189,37 +319,20 @@
                 fgpDrawnItems= new L.featureGroup();
                 fgpDrawnItems.addTo(mymap);
                 
+                lyrMarkerCluster = L.markerClusterGroup();  // cluster points together
                 
-                lyrChinaPb =L.geoJSON.ajax('data/Chinalead.geojson',{pointToLayer:returnEagleMarker});
+                lyrChinaPb =L.geoJSON.ajax('data/Chinalead.geojson',{pointToLayer:returnChinaPb,filter:filterSpecimen,filter:filterProvince});
                 lyrChinaPb.on('data:loaded',function(){
-                    lyrMarkerCluster.addLayer(lyrChinaPb);
-                    lyrMarkerCluster.addTo(mymap);
+                    arSpecimenIDs.sort(function(a,b){return a-b});
+                    $("#txtFindSpecimen").autocomplete({
+                        source:arSpecimenIDs
+                    });
+                   lyrMarkerCluster.clearLayers();
+                   lyrMarkerCluster.addLayer(lyrChinaPb);
+                   lyrMarkerCluster.addTo(mymap);
                 });
                 
-                lyrEagleNests =L.geoJSON.ajax('data/wildlife_eagle.geojson',{pointToLayer:returnEagleMarker}).addTo(mymap);  // convert geoJson to leaflet object for styling-- point to layer-- then we can declare a function in the end to filter attribute of the point, set color etc... 
                 
-//                lyrEagleNests.on("data:loaded",function(){
-//                    mymap.fitBounds(lyrEagleNests.getBounds());
-//                }); // when data loaded zoom to this layer
-                
-                lyrMarkerCluster = L.markerClusterGroup();  // cluster points together 
-                
-                lyrRaptorNests =L.geoJSON.ajax('data/wildlife_raptor.geojson',{pointToLayer:returnRaptorMarker});  // convert geoJson to leaflet object then we can declare a function in the end to filter attribute of the point, set color etc... 
-                lyrRaptorNests.on('data:loaded',function(){
-                    lyrMarkerCluster.addLayer(lyrRaptorNests);
-                }); // when data loaded zoom to this layer // add cluster markers to this layer
-                
-                lyrClientLines = L.geoJSON.ajax('data/client_lines.geojson',{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(mymap);
-                lyrClientLines.on('data:loaded',function(){
-                     arProjectIDs.sort(function(a,b){return a-b});
-                     $("#textFindProject").autocomplete({
-                         source:arProjectIDs
-                     });
-                });  // setup autocomplete drop down box for search
-                
-                lyrBUOWL = L.geoJSON.ajax('data/wildlife_buowl.geojson',{style:styleBUOWL,onEachFeature:processBUOWL,filter:filterBUOWL}).addTo(mymap);//add multi polygons
-                
-                lyrGBH = L.geoJSON.ajax('data/wildlife_gbh.geojson',{style:{color:'fuchsia'}}).bindTooltip("GBH Nesting Area").addTo(mymap);//add multi polygons
                 
                 //****************Setup Layer Control*********************
                 
@@ -230,11 +343,7 @@
                 };
                 
                 objOverlays= {
-                    "Client Linears":lyrClientLines,
-                    "Burrowing Owl Habitat":lyrBUOWL,
-                    "GBH":lyrGBH,
-                    "Eagle Nests":lyrEagleNests,
-                    "Raptor Nests":lyrMarkerCluster,
+                    "China Lead":lyrChinaPb,
                     "Drawn Items":fgpDrawnItems
                 }; // overlay image and buttons need to declare layer before put in overlap
                 
@@ -276,156 +385,6 @@
                 });
             });  
            
-            //*****************BUOWL Functions*************************** 
-            
-           function styleBUOWL(json){
-                var att = json.properties;
-                switch (att.hist_occup){
-                    case "Yes":
-                        return {color:"deeppink",fillColor:"black"};
-                        break;
-                    case "Undetermined":
-                        return {color:"black"};
-                        break;
-                }
-            }
-            
-            function processBUOWL(json,lyr){
-                var att = json.properties;
-                lyr.bindTooltip("<h4>Habitat ID: "+att.habitat_id+"</h4>Historically Occupied: "+att.hist_occup+"<br>Status: "+att.recentstatus);
-            }
-           
-            function filterBUOWL(json){
-                var att = json.properties; 
-                if (att.recentstatus == "REMOVED"){
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            
-            //***************Clientlinear Functions****************
-           
-            function styleClientLinears(json){
-                var att = json.properties;
-                switch (att.type){
-                    case "Pipeline":
-                        return {color:"peru"};
-                        break;
-                    case "Flowline":
-                        return {color:"navy"};
-                        break; 
-                    case "Flowline, est.":
-                        return {color:"peru",dashArray:"5,5"};
-                        break;
-                    case "Electric Line":
-                        return {color:"darkgreen"};
-                        break;   
-                    case "Access Road - Confirmed":
-                        return {color:"darkred"};
-                        break; 
-                    case "Access Road - Estimated":
-                        return {color:"darkred",dashArray:"5,5"};
-                        break;
-                    case "Extraction":
-                        return {color:"indigo"};
-                        break;
-                    default:
-                        return {color:"darkgoldenrod"};
-                        break;
-                }
-            }
-            function processClientLinears(json,lyr) {
-                var att = json.properties;
-                lyr.bindTooltip("<h4>Linear Project: "+att.Project+"</h4>Type: "+att.type+"<br>ROW Wdith: "+att.row_width);
-                arProjectIDs.push(att.Project.toString());
-            }
-           
-            function returnClientLineByID(id) {   //search for ClientLine by id we enter 
-                var arLayers = lyrClientLines.getLayers();   // define variable to get the Clientlines layer 
-                for (i=0;i<arLayers.length-1;i++) {       //loop through arLayers
-                    var featureID = arLayers[i].feature.properties.Project; // tell loop where to find feature properties "Project" attribute in 
-                    if (featureID==id) {
-                        return arLayers[i];
-                    }
-                }
-                return false;
-            }
-           
-           function testClientLineID(id) {                        //set up error message and disable search when entering invalid numbers in searchbox
-               if (arProjectIDs,indexOf(id)<0) {
-                   $("#divFindProject").addClass("has-error");
-                   $("#divProjectError").html("PROJECT ID NOT FOUND");
-                   $("#btnFindProject").attr("disabled",true); 
-               } else {
-                   $("#divFindProject").removeClass("has-error");
-                   $("#divProjectError").html("");
-                   $("#btnFindProject").attr("disabled",false);    
-               }
-           }
-            
-            $("#txtFindProject").on('keyup paste', function(){
-                var id = $("#txtFindProject").val();
-                testClientLineID(id);
-            });
-           
-            $("#btnFindProject").click(function(){   //handle click event of search button
-                var id = $("#txtFindProject").val(); // retrieve id from text box
-                var lyr = returnClientLineByID(id); // pass it to the returnProjectById
-                if (lyr) {                           // if id found, remove existing layer and add/create new feature to search results
-                    if (lyrSearch){
-                          lyrSearch.remove();
-                    }
-                    lyrSearch = L.geoJSON(lyr.toGeoJSON(),{style:{color:'red',weight:10,opacity:0.5}}).addTo(mymap);
-                    mymap.fitBounds(lyr.getBounds().pad(1)); // zoom to the search layer
-                    var att = lyr.feature.properties;  // populate side bar with search results 
-                    $("#divProjectData").html("<h4 class='text-center'>Attributes</h4><h5>Type: "+att.type+"</h5><h5>ROW width: "+att.row_width+"m </h5>");
-                }  else {     // if not found return error
-                     $("#divProjectError").html("Project ID not found");
-                } 
-            });
-           
-            //***********Eagle Functions************
-           
-            function returnEagleMarker(json,latlng){
-                var att = json.properties;           
-                if (att.status=="ACTIVE NEST"){
-                    var clrNest = "deeppink";
-                } else {
-                    var clrNest = "green";
-                }
-                return L.circle(latlng, {radius:804,color:clrNest,fillColor:"green",fillOpacity:0.5}).bindTooltip("<h4>Eagle Nest:"+att.nest_id+"</h4>Status: "+att.status);
-                
-            } // filter and query point properities including point shaps, color, and set conditions for displaying points with different attributes 
-          
-            //***********Raptor Functions************
-           
-            function returnRaptorMarker(json,latlng){
-                var att = json.properties;
-                switch(att.recentspecies){ //add radius to each species
-                    case "Red-tail Hawk":
-                        var radRaptor =533;
-                        break;
-                    case "Swainsons Hawk":
-                        var radRaptor = 400; 
-                        break;
-                    default:
-                        var radRaptor = 804;
-                        break;
-                }
-                switch (att.recentstatus){
-                    case "ACTIVE NEST":
-                        var optRaptor = {radius:radRaptor, color:"deeppink",fillColor:"blue",fillOpacity:0.5};
-                        break;
-                    case "INACTIVE NEST":
-                        var optRaptor= {radius:radRaptor, color:"blue",fillColor:"blue",fillOpacity:0.5};
-                        break
-                    case "FLEDGED NEST":
-                        var optRaptor = {radius:radRaptor, color:"deeppink",fillColor:"blue",fillOpacity:0.5,dashArray:"2,8"};
-                        break;
-                }
-                return L.circle(latlng, optRaptor).bindPopup("<h4>Raptor Nest:"+att.Nest_ID+"</h4>Status: "+att.recentstatus+"<br>Species:"+att.recentspecies+"<br>Last Survey: "+att.lastsurvey);
-            }
            
             //************** JQuery Event Handler******************   
            
@@ -433,12 +392,215 @@
                 mymap.locate();
             });
                          
-            //************** General Funcations************************** 
+            //************** Specimen Funcations************************** 
+             function returnSpecimenMarker(json, latlng){
+                var att = json.properties;
+                if (att.Specimen=='galena') {
+                    var clrSpecimen = 'deeppink';
+                } else {
+                    var clrSpecimen = 'chartreuse';
+                }
+                arSpecimenIDs.push(att.Specimen.toString());
+                return L.circle(latlng, {radius:804, color:clrSpecimen,fillColor:'chartreuse', fillOpacity:0.5}).bindTooltip("<h4>Eagle Nest: "+att.Specimen+"</h4>Status: "+att.Specimen);
+            }
+            
            
+              function filterSpecimen(json) {
+                var att=json.properties;
+                var optFilter = $("input[name=fltSpecimen]:checked").val();
+                if (optFilter=='ALL') {
+                    return true;
+                } else {
+                    return (att.Specimen==optFilter);
+                }
+            }
+           
+               $("#btnFindSpecimen").click(function(){
+                var val = $("#txtFindSpecimen").val();
+                var lyr = returnLayerByAttribute(lyrChinaPb,'Specimen',val);
+                if (lyr) {
+                    if (lyrSearch) {
+                        lyrSearch.remove();
+                    }
+                    lyrSearch = L.circle(lyr.getLatLng(), {radius:800, color:'red', weight:10, opacity:0.5, fillOpacity:0}).addTo(mymap);
+                    mymap.setView(lyr.getLatLng(), 14);
+                    var att = lyr.feature.properties;
+                    $("#divSpecimenData").html("<h4 class='text-center'>Attributes</h4><h5>Status: "+att.Specimen+"</h5>");
+                    $("#divSpecimenError").html("");
+                } else {
+                    $("#divSpecimenError").html("**** Eagle Nest ID not found ****");
+                }
+            });
+            
+            $("#lblSpecimen").click(function(){
+                $("#divSpecimenData").toggle(); 
+            });
+            $("input[name=fltSpecimen]").click(function(){
+                arSpecimenIDs=[];
+                lyrChinaPb.refresh();
+            });
+           
+           //************** Province functions************************** 
+             function filterProvince(json) {
+                var arProvinceFilter=[];
+                $("input[name=fltProvince]").each(function(){
+                    if (this.checked) {
+                        arProvinceFilter.push(this.value);
+                    }
+                });
+                var att = json.properties;
+                switch (att.Province) {
+                    case "Anhui":
+                        return (arProvinceFilter.indexOf('Anhui')>=0);
+                        break;
+                    case "Fujian":
+                        return (arProvinceFilter.indexOf('Fujian')>=0);
+                        break;
+                    case "Gansu":
+                        return (arProvinceFilter.indexOf('Gansu')>=0);
+                        break;
+                    case "Guangdong":
+                        return (arProvinceFilter.indexOf('Guangdong')>=0);
+                        break;
+                    case "Guangxi":
+                        return (arProvinceFilter.indexOf('Guangxi')>=0);
+                        break;
+                    case "Guizhou":
+                        return (arProvinceFilter.indexOf('Guizhou')>=0);
+                        break;
+                    case "Hebei":
+                        return (arProvinceFilter.indexOf('Hebei')>=0);
+                        break;
+                    case "Heilongjiang":
+                        return (arProvinceFilter.indexOf('Heilongjiang')>=0);
+                        break;
+                    case "Henan":
+                        return (arProvinceFilter.indexOf('Henan')>=0);
+                        break;
+                     case "Hubei":
+                        return (arProvinceFilter.indexOf('Hubei')>=0);
+                        break;
+                    case "Hunan":
+                        return (arProvinceFilter.indexOf('Hunan')>=0);
+                        break;
+                    case "Inner_Mongolia":
+                        return (arProvinceFilter.indexOf('Inner_Mongolia')>=0);
+                        break;
+                     case "Jiangsu":
+                        return (arProvinceFilter.indexOf('Jiangsu')>=0);
+                        break;
+                    case "Jiangxi":
+                        return (arProvinceFilter.indexOf('Jiangxi')>=0);
+                        break;
+                    case "Jilin":
+                        return (arProvinceFilter.indexOf('Jilin')>=0);
+                        break;
+                     case "Liaoning":
+                        return (arProvinceFilter.indexOf('Liaoning')>=0);
+                        break;
+                    case "Ningxia":
+                        return (arProvinceFilter.indexOf('Ningxia')>=0);
+                        break;
+                    case "Qinghai":
+                        return (arProvinceFilter.indexOf('Qinghai')>=0);
+                        break;
+                     case "Shandong":
+                        return (arProvinceFilter.indexOf('Shandong')>=0);
+                        break;
+                    case "Shanxi":
+                        return (arProvinceFilter.indexOf('Shanxi')>=0);
+                        break;
+                    case "Shaanxi":
+                        return (arProvinceFilter.indexOf('Shaanxi')>=0);
+                        break;
+                     case "Sichuan":
+                        return (arProvinceFilter.indexOf('Sichuan')>=0);
+                        break;
+                    case "Hainan":
+                        return (arProvinceFilter.indexOf('Hainan')>=0);
+                        break;
+                    case "Tibet":
+                        return (arProvinceFilter.indexOf('Tibet')>=0);
+                        break;
+                    case "Xinjiang":
+                        return (arProvinceFilter.indexOf('Xinjiang')>=0);
+                        break;
+                    case "Yunnan":
+                        return (arProvinceFilter.indexOf('Yunnan')>=0);
+                        break;
+                    case "Zhejiang":
+                        return (arProvinceFilter.indexOf('Zhejiang')>=0);
+                        break;
+//                    default:
+//                        return (arProvinceFilter.indexOf('Anhui')>=0);
+//                        break;
+                }
+            }
+           
+           
+            $("#lblProvince").click(function(){
+                $("#divProvinceData").toggle(); 
+            });
+            
+            $("#btnProvinceFilterAll").click(function(){
+                $("input[name=fltProvince]").prop('checked', true);
+            });
+            
+            $("#btnProvinceFilterNone").click(function(){
+                $("input[name=fltProvince]").prop('checked', false);
+            });
+            
+            $("#btnProvinceFilter").click(function(){
+                arProvinceIDs=[]; 
+                lyrChinaPb.refresh();
+            });
+           
+         //************** General Funcations**************************                         
+                                    
+                                    
             function LatLngToArrayString(ll) {
                 return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
             }
            
+            function returnLayerByAttribute(lyr,att,val) {
+                var arLayers = lyr.getLayers();
+                for (i=0;i<arLayers.length-1;i++) {
+                    var ftrVal = arLayers[i].feature.properties[att];
+                    if (ftrVal==val) {
+                        return arLayers[i];
+                    }
+                }
+                return false;
+            }
+            
+            function testLayerAttribute(ar, val, att, fg, err, btn) {
+                if (ar.indexOf(val)<0) {
+                    $(fg).addClass("has-error");
+                    $(err).html("**** "+att+" NOT FOUND ****");
+                    $(btn).attr("disabled", true);
+                } else {
+                    $(fg).removeClass("has-error");
+                    $(err).html("");
+                    $(btn).attr("disabled", false);
+                }
+            }
+            
+            function returnChinaPb(json,latlng){
+                var att = json.properties;
+//                var customPopup ="<h4 class = 'text-center'>Site: "+att.Site_En+"</h4><h5>Province: "+att.Province+"</h5><h5>Metallogenic Province: "+att.Metal_Province+"</h5><h5>Specimen: "+att.Specimen+"</h5><h5>Metal: "+att.Metal+"</h5><h5>206Pb/204Pb: "+att.Isotope_1+"</h5><h5>207Pb/204Pb: "+att.Isotope_2+"</h5><h5>208Pb/204Pb: "+att.Isotope_3+"</h5><h5>Model Age (Ma): "+att.Age+"</h5><h5>Mu: "+att.Mu+"</h5><h5>Kappa: "+att.Kappa+"</h5><h5>Year of Publication: "+att.Year+"</h5>";
+                var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Site</th><td>"+att.Site_En+"</td></tr>" + "<tr><th>Province</th><td>"+att.Province+"</td></tr>" +  
+                  "<tr><th>Metallogenic Province</th><td>"+att.Metal_Province+"</td></tr>" +
+                  "<tr><th>Specimen</th><td>"+att.Specimen+"</td></tr>" +
+                  "<tr><th>Metal</th><td>"+att.Metal+ "</td></tr>" +
+                  "<tr><th>206Pb/204Pb</th><td>"+att.Isotope_1+"</td></tr>" +
+                  "<tr><th>207Pb/204Pb</th><td>"+att.Isotope_2+"</td></tr>" +
+                  "<tr><th>208Pb/204Pb</th><td>"+att.Isotope_3+"</td></tr>"  +
+                  "<tr><th>Model Age (Ma)</th><td>"+att.Age+"</td></tr>" +
+                  "<tr><th>Mu</th><td>"+att.Mu+"</td></tr>" +
+                  "<tr><th>Kappa</th><td>"+att.Kappa+"</td></tr>"
+                  "</table>";
+                return L.circle(latlng, {radius:2500, color:"blue",fillColor:"blue",fillOpacity:0.3}).bindTooltip(content);
+            }
        </script>
     </body>
 </html>
